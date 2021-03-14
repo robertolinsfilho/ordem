@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>SB Admin 2 - Blank</title>
+<?php echo (isset($titulo) ? '<title>System Ordem /'.$titulo.'</title>': '<title> System ordem</title>') ?>
+    
 
     <!-- Custom fonts for this template-->
     <script src="https://kit.fontawesome.com/4c30a6a8c1.js" crossorigin="anonymous"></script>

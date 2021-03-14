@@ -11,15 +11,22 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
+               
+                <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?php echo base_url('/');?>">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?php echo $titulo ?></li>
+                </ol>
+                </nav>
+
+               
+
+                
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <a href="" title="cadastrar novo usuários"class="btn btn-success btn-sm float-right" ><i class="fas fa-user-plus"></i>&nbsp; Novo</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -30,7 +37,7 @@
                                             <th>Usuario</th>
                                             <th>login</th>
                                             <th>ativo</th>
-                                            <th>ações</th>
+                                            <th class="text-right">ações</th>
                                             
                                         </tr>
                                     </thead>
@@ -42,9 +49,9 @@
                                             <td><?php  echo $user->username ?></td>
                                             <td><?php  echo$user->email ?></td>
                                             <td><?php  echo$user->active ?></td>
-                                            <td>
-                                            <a href="" title="editar"class="btn btn-sm btn-primary">editar</a>
-                                            <a href=""  title="excluir" class="btn btn-sm btn-danger">editar</a>
+                                            <td  class="text-right">
+                                            <a href="" title="editar"class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
+                                            <a href=""  title="excluir" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>
                                             </td>
                                         </tr>
                                       <?php endforeach;?>
