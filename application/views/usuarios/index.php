@@ -50,7 +50,7 @@
                                             <td><?php  echo$user->email ?></td>
                                             <td><?php  echo$user->active ?></td>
                                             <td  class="text-right">
-                                            <a href="" title="editar"class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
+                                            <a href="<?php echo base_url('usuarios/edit/'.$user->id) ?>" title="editar"class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
                                             <a href=""  title="excluir" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>
                                             </td>
                                         </tr>
