@@ -29,12 +29,12 @@
                             <a href="<?php echo base_url('usuarios') ?>" title="Voltar"class="btn btn-success btn-sm float-right" ><i class="fas fa-arrow-left"></i>&nbsp; Voltar</a>
                         </div>
                         <div class="card-body">
-                        <form>
+                        <form method="post" name="form_edit">
                         <div class="form-group row">
                             <div class="col-md-4">
                                 <label>Nome :</label>
                                 <input type="text" class="form-control" name="first_name" placeholder="seu nome" value="<?php echo $usuario->first_name; ?>" aria-describedby="emailHelp">
-                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                               <?php echo form_error('first_name',' <small  class="form-text text-danger">','</small>');?>
                             </div>
                             <div class="col-md-4">
                                 <label>Sobrenome :</label>
@@ -48,6 +48,11 @@
                             </div>
                             </div>
                             <div class="form-group row">
+                            <div class="col-md-4">
+                                <label>Usúario :</label>
+                                <input type="text" class="form-control" name="username" placeholder="seu usuario" value="<?php echo $usuario->username; ?>" aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
                             <div class="col-md-4">
                                 <label>Ativo :</label>
                                 <select class="form-control" name="active">
@@ -65,7 +70,21 @@
                                 
                             </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="form-group row">
+                            <div class="col-md-6">
+                                <label>Senha :</label>
+                                <input type="password" class="form-control" name="password" placeholder="seu Senha"  aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label> Confirme suaSenha :</label>
+                                <input type="password" class="form-control" name="confirm_password" placeholder="Conifirme sua senha"  aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <input type="hidden" name="usuario_id" value="<?php echo $usuario->id?>">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
                             </form>
                         </div>
                     </div>
