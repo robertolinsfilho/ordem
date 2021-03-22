@@ -23,7 +23,7 @@
                <div class="row">
                <div class ="col-md-12">
 
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong><i class="fas fa-exclamation-triangle"></i>&nbsp;<?php echo $message ?></strong> 
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -56,7 +56,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <a href="" title="cadastrar novo usuários"class="btn btn-success btn-sm float-right" ><i class="fas fa-user-plus"></i>&nbsp; Novo</a>
+                            <a href="<?php echo base_url('usuarios/add')?>" title="cadastrar novo usuários"class="btn btn-success btn-sm float-right" ><i class="fas fa-user-plus"></i>&nbsp; Novo</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -66,7 +66,8 @@
                                             <th>#</th>
                                             <th>Usuario</th>
                                             <th>login</th>
-                                            <th>ativo</th>
+                                            <th>Perfil</th>
+                                            <th class="text-center pr-2" >ativo</th>
                                             <th class="text-right no-sort">ações</th>
                                             
                                         </tr>
@@ -75,15 +76,34 @@
                                     <tbody>
                                         <?php foreach ($usuarios as $user) :?>
                                         <tr>
-                                            <td><?php echo$user->id ?></td>
-                                            <td><?php  echo $user->username ?></td>
-                                            <td><?php  echo$user->email ?></td>
-                                            <td><?php  echo$user->active ?></td>
+                                            <td><?php echo $user->id ?></td>
+                                            <td><?php echo $user->username ?></td>
+                                            <td><?php echo $user->email ?></td>
+                                            <td><?php echo ($this->ion_auth->is_admin($user->id) ? 'administrador' : 'Vendendor');?> </td>
+                                            <td class="text-center"><?php  echo ($user->active == 1 ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-danger btn-sm">Não</span>') ?></td>
                                             <td  class="text-right">
                                             <a href="<?php echo base_url('usuarios/edit/'.$user->id) ?>" title="editar"class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
-                                            <a href=""  title="excluir" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>
+                                            <a href="javascript(void)" data-toggle="modal" data-target="#user-<?php echo $user->id; ?>" title="excluir" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>
                                             </td>
                                         </tr>
+                                        <div class="modal fade" id="user-<?php echo $user->id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Tem Certeza da Deleção ?</h5>
+                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">Para excluir o registro clique em <strong>Sim</strong></div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Não</button>
+                                                        <a class="btn btn-danger btn-sm" href="<?php echo base_url('usuarios/del/'.$user->id) ?>">Sim</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                       <?php endforeach;?>
                                     </tbody>
                                 </table>
